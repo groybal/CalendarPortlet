@@ -32,7 +32,7 @@ import org.jasig.portlet.calendar.spring.PortletApplicationContextLocator;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 /**
  * This tool is responsible for creating the Calendar portlet database schema (and dropping
@@ -80,11 +80,11 @@ public class SchemaCreator implements ApplicationContextAware {
         final LocalSessionFactoryBean sessionFactoryBean = applicationContext
                 .getBean(SESSION_FACTORY_BEAN_NAME, LocalSessionFactoryBean.class);
         final DataSource dataSource = applicationContext.getBean(DATA_SOURCE_BEAN_NAME, DataSource.class);
-
+/**
         try (final Connection conn = dataSource.getConnection()) {
             final Configuration cfg = sessionFactoryBean.getConfiguration();
             final SchemaExport schemaExport = new SchemaExport(cfg, conn);
-            schemaExport.execute(true, true, false, false);
+            SchemaExport.execute(SchemaExport.parseCommandLineArgs(null));
 
             final List<Exception> exceptions = schemaExport.getExceptions();
             if (exceptions.size() != 0) {
@@ -98,7 +98,7 @@ public class SchemaCreator implements ApplicationContextAware {
             logger.error("Failed to initialize & invoke the SchemaExport tool", sqle);
             return 1;
         }
-
+*/
         return 0;
 
     }

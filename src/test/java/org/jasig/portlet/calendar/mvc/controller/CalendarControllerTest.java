@@ -32,10 +32,10 @@ import org.jasig.portlet.calendar.dao.ICalendarSetDao;
 import org.joda.time.DateMidnight;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.mock.web.portlet.MockPortletSession;
-import org.springframework.mock.web.portlet.MockRenderRequest;
+import com.liferay.portletmvc4spring.test.mock.web.portlet.MockPortletSession;
+import com.liferay.portletmvc4spring.test.mock.web.portlet.MockRenderRequest;
 import org.springframework.test.util.ReflectionTestUtils;
-import org.springframework.web.portlet.ModelAndView;
+import com.liferay.portletmvc4spring.ModelAndView;
 
 public class CalendarControllerTest {
 

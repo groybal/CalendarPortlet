@@ -23,8 +23,8 @@ import javax.portlet.*;
 import org.jasig.portlet.calendar.service.IInitializationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.portlet.HandlerInterceptor;
-import org.springframework.web.portlet.ModelAndView;
+import com.liferay.portletmvc4spring.HandlerInterceptor;
+import com.liferay.portletmvc4spring.ModelAndView;
 
 /**
  * {code PortletFilter} to run initialization code when a user session is first created.

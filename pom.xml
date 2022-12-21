@@ -73,18 +73,20 @@
         <!-- Dependency versions -->
         <cas.version>3.6.2</cas.version>
         <hsqldb.version>2.3.2</hsqldb.version>
-        <hibernate.version>3.6.10.Final</hibernate.version>
-        <hibernateTools.version>3.6.0.Final</hibernateTools.version>
+        <hibernate.version>5.6.14.Final</hibernate.version>
+        <hibernateTools.version>5.6.14.Final</hibernateTools.version>
         <icu4j.version>72.1</icu4j.version>
         <jackson.version>2.13.4</jackson.version>
         <jackson-databind.version>2.13.4</jackson-databind.version>
         <jaxb2basicsVersion>0.6.0</jaxb2basicsVersion>
         <joda-time.version>2.12.0</joda-time.version>
         <logbackVersion>1.4.4</logbackVersion>
+        <portlet-mvc-4-spring.version>5.3.2</portlet-mvc-4-spring.version>
         <resource-server.version>1.3.1</resource-server.version>
         <servlet-api.version>3.0.1</servlet-api.version>
         <slf4jVersion>1.7.36</slf4jVersion>
-        <spring.version>4.3.30.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
+        <spring.portlet.version>4.3.30.RELEASE</spring.portlet.version>
         <spring-ws.version>2.4.6.RELEASE</spring-ws.version>
         <uportal-libs.version>5.11.1</uportal-libs.version>
         <uportal-maven-plugin.version>1.0.1</uportal-maven-plugin.version>
@@ -230,7 +232,7 @@
             <dependency>
                 <groupId>javax.portlet</groupId>
                 <artifactId>portlet-api</artifactId>
-                <version>2.0</version>
+                <version>3.0.0</version>
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -287,6 +289,10 @@
                     <exclusion>
                         <groupId>org.springframework</groupId>
                         <artifactId>spring-webmvc</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-webmvc-portlet</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -450,8 +456,23 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc-portlet</artifactId>
+                <artifactId>spring-webmvc</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.liferay.portletmvc4spring</groupId>
+                <artifactId>com.liferay.portletmvc4spring.framework</artifactId>
+                <version>${portlet-mvc-4-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.liferay.portletmvc4spring</groupId>
+                <artifactId>com.liferay.portletmvc4spring.security</artifactId>
+                <version>${portlet-mvc-4-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.liferay.portletmvc4spring</groupId>
+                <artifactId>com.liferay.portletmvc4spring.test</artifactId>
+                <version>${portlet-mvc-4-spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.ws</groupId>
@@ -687,7 +708,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc-portlet</artifactId>
+            <artifactId>spring-webmvc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.ws</groupId>
@@ -696,6 +717,14 @@
         <dependency>
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.liferay.portletmvc4spring</groupId>
+            <artifactId>com.liferay.portletmvc4spring.framework</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.liferay.portletmvc4spring</groupId>
+            <artifactId>com.liferay.portletmvc4spring.security</artifactId>
         </dependency>
         <dependency>
             <groupId>rome</groupId>
@@ -790,6 +819,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.liferay.portletmvc4spring</groupId>
+            <artifactId>com.liferay.portletmvc4spring.test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

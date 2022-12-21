@@ -30,6 +30,6 @@
     
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     
-    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+    <bean class="com.liferay.portletmvc4spring.mvc.method.annotation.PortletRequestMappingHandlerAdapter"/>
 
 </beans>

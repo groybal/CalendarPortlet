@@ -41,7 +41,7 @@ import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.portlet.bind.annotation.EventMapping;
+import com.liferay.portletmvc4spring.bind.annotation.EventMapping;
 
 /** @author Chris Waymire (chris@waymire.net) */
 @Controller

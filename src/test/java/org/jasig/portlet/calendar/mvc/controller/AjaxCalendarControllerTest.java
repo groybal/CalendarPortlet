@@ -47,10 +47,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.context.ApplicationContext;
-import org.springframework.mock.web.portlet.MockResourceRequest;
-import org.springframework.mock.web.portlet.MockResourceResponse;
+import com.liferay.portletmvc4spring.test.mock.web.portlet.MockResourceRequest;
+import com.liferay.portletmvc4spring.test.mock.web.portlet.MockResourceResponse;
 import org.springframework.test.util.ReflectionTestUtils;
-import org.springframework.web.portlet.ModelAndView;
+import com.liferay.portletmvc4spring.ModelAndView;
 
 /**
  * @author Jen Bourey, jbourey@unicon.net

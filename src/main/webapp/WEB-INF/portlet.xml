@@ -27,7 +27,7 @@
 
     <portlet>
         <portlet-name>calendar</portlet-name>
-        <portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+        <portlet-class>com.liferay.portletmvc4spring.DispatcherPortlet</portlet-class>
         <init-param>
             <name>contextConfigLocation</name>
             <value>classpath:/context/portlet/calendar.xml</value>

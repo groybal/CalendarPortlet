@@ -40,7 +40,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.portlet.bind.annotation.ActionMapping;
+import com.liferay.portletmvc4spring.bind.annotation.ActionMapping;
 
 /**
  * EditCalendarDefinitionController allows a user to add or edit a user-defined calendar definition.

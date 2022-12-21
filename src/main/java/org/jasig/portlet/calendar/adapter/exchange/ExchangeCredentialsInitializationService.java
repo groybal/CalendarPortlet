@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.portlet.context.PortletRequestAttributes;
+import com.liferay.portletmvc4spring.context.PortletRequestAttributes;
 
 /**
  * ExchangeCredentialsInitializationService creates a Credentials object from the first one of the

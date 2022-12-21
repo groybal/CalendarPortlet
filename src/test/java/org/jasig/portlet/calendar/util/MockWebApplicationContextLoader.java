@@ -27,14 +27,14 @@ import org.springframework.context.event.SourceFilteringListener;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.mock.web.MockServletContext;
-import org.springframework.mock.web.portlet.MockPortletConfig;
-import org.springframework.mock.web.portlet.ServletWrappingPortletContext;
+import com.liferay.portletmvc4spring.test.mock.web.portlet.MockPortletConfig;
+import com.liferay.portletmvc4spring.test.mock.web.portlet.ServletWrappingPortletContext;
 import org.springframework.test.context.ContextLoader;
 import org.springframework.test.context.MergedContextConfiguration;
 import org.springframework.test.context.support.AbstractContextLoader;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.portlet.DispatcherPortlet;
-import org.springframework.web.portlet.context.XmlPortletApplicationContext;
+import com.liferay.portletmvc4spring.DispatcherPortlet;
+import com.liferay.portletmvc4spring.context.XmlPortletApplicationContext;
 import org.springframework.web.servlet.ViewResolver;
 
 /**

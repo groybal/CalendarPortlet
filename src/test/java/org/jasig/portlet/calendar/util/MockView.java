@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.web.servlet.ViewRendererServlet;
+import com.liferay.portletmvc4spring.ViewRendererServlet;
 import org.springframework.web.servlet.view.AbstractView;
 
 public class MockView extends AbstractView {

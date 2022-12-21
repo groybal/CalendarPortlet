@@ -133,7 +133,7 @@
 
     <!-- Abstract Default Exception Handler Bean -->
     <bean id="defaultExceptionHandlerTemplate"
-        class="org.springframework.web.portlet.handler.SimpleMappingExceptionResolver"
+        class="com.liferay.portletmvc4spring.handler.SimpleMappingExceptionResolver"
         abstract="true">
         <property name="defaultErrorView" value="defError"/>
         <property name="exceptionMappings">

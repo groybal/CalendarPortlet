@@ -30,7 +30,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.portlet.bind.annotation.ActionMapping;
+import com.liferay.portletmvc4spring.bind.annotation.ActionMapping;
 
 /**
  * AdminCalendarController provides a main administrative view for the calendar portlet. The page is

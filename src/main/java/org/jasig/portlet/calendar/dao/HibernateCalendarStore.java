@@ -20,22 +20,24 @@ package org.jasig.portlet.calendar.dao;
 
 import java.util.List;
 import java.util.Set;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.jasig.portlet.calendar.CalendarConfiguration;
 import org.jasig.portlet.calendar.CalendarDefinition;
 import org.jasig.portlet.calendar.PredefinedCalendarConfiguration;
 import org.jasig.portlet.calendar.PredefinedCalendarDefinition;
 import org.jasig.portlet.calendar.UserDefinedCalendarConfiguration;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate5.SessionFactoryUtils;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 /**
  * HibernateCalendarStore provides a hibernate implementation of the CalendarStore.
  *
  * @author Jen Bourey
- */
+sp  */
 public class HibernateCalendarStore extends HibernateDaoSupport implements CalendarStore {
 
   protected final Log log = LogFactory.getLog(this.getClass());
@@ -51,7 +53,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       getHibernateTemplate().flush();
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -66,7 +68,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       getHibernateTemplate().flush();
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -90,7 +92,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return configurations;
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -105,13 +107,13 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
               + "calendarDefinition.name = :name and "
               + "config.class = UserDefinedCalendarConfiguration";
 
-      Query q = this.getSession().createQuery(query);
+      Query q = this.getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(query);
       q.setString("subscribeId", subscribeId);
       q.setString("name", name);
       return (UserDefinedCalendarConfiguration) q.uniqueResult();
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -133,7 +135,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return configurations;
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -158,7 +160,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return configurations;
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -172,13 +174,13 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
               + "and calendarDefinition.name = :name and "
               + "config.class = PredefinedCalendarConfiguration";
 
-      Query q = this.getSession().createQuery(query);
+      Query q = this.getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(query);
       q.setString("subscribeId", subscribeId);
       q.setString("name", name);
       return (PredefinedCalendarConfiguration) q.uniqueResult();
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -202,7 +204,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return configurations;
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -222,7 +224,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return configurations;
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -242,7 +244,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
         query = query.concat("and :role" + i + " not in elements(def.defaultRoles) ");
       }
 
-      Query q = this.getSession().createQuery(query);
+      Query q = this.getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(query);
       q.setString("subscribeId", subscribeId);
       int count = 0;
       for (String role : roles) {
@@ -256,7 +258,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return definitions;
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -288,7 +290,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       }
       query = query.concat(")");
 
-      Query q = this.getSession().createQuery(query);
+      Query q = this.getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(query);
       q.setString("subscribeId", subscribeId);
       if (roles.size() > 0) q.setParameterList("roles", roles);
       @SuppressWarnings("unchecked")
@@ -302,7 +304,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       }
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -323,7 +325,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return definitions;
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -339,12 +341,12 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
           "from PredefinedCalendarDefinition def "
               + "left join fetch def.defaultRoles role where "
               + "def.name = :name";
-      Query q = this.getSession().createQuery(query);
+      Query q = this.getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(query);
       q.setString("name", name);
       return (PredefinedCalendarDefinition) q.uniqueResult();
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -360,12 +362,12 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
           "from PredefinedCalendarDefinition def "
               + "left join fetch def.defaultRoles role where "
               + "def.id = :id";
-      Query q = this.getSession().createQuery(query);
+      Query q = this.getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(query);
       q.setLong("id", id);
       return (PredefinedCalendarDefinition) q.uniqueResult();
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -380,7 +382,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return (CalendarDefinition) getHibernateTemplate().get(CalendarDefinition.class, id);
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -400,7 +402,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return configurations.get(0);
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -415,7 +417,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return (CalendarConfiguration) getHibernateTemplate().load(CalendarConfiguration.class, id);
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -430,7 +432,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       getHibernateTemplate().flush();
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -441,7 +443,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       getHibernateTemplate().flush();
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 
@@ -460,7 +462,7 @@ public class HibernateCalendarStore extends HibernateDaoSupport implements Calen
       return userRoles;
 
     } catch (HibernateException ex) {
-      throw convertHibernateAccessException(ex);
+      throw SessionFactoryUtils.convertHibernateAccessException(ex);
     }
   }
 }

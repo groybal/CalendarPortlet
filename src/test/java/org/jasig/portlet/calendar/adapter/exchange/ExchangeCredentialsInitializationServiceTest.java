@@ -28,11 +28,11 @@ import org.apache.http.auth.NTCredentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.mock.web.portlet.MockPortletPreferences;
-import org.springframework.mock.web.portlet.MockPortletRequest;
+import com.liferay.portletmvc4spring.test.mock.web.portlet.MockPortletPreferences;
+import com.liferay.portletmvc4spring.test.mock.web.portlet.MockPortletRequest;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.portlet.context.PortletRequestAttributes;
+import com.liferay.portletmvc4spring.context.PortletRequestAttributes;
 
 public class ExchangeCredentialsInitializationServiceTest {
 
